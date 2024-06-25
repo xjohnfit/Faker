@@ -1,8 +1,8 @@
 import { PhotoIcon, UserCircleIcon } from "@heroicons/react/24/solid";
 import { useEffect, useState } from "react";
 import axios from "axios";
-
 import React from 'react'
+import { getCountry } from "./getCountry.js";
 
 const Form = () => {
 
@@ -11,7 +11,7 @@ const Form = () => {
   const [email, setEmail] = useState("Email will be populated here");
   const [gender, setGender] = useState("Gender will be populate here");
   const [address, setAddress] = useState("Address will be populate here");
-  const [country, setCountry] = useState("Country will be populate here");
+
   
   const emails = [
     {
@@ -50,7 +50,6 @@ const Form = () => {
         person_gender: 'gender',
         person_address: 'address',
         postal_code: 'postal',
-        country_code: 'country',
       }
     };
     
@@ -62,10 +61,13 @@ const Form = () => {
       setEmail(response.data.full_name.replace(' ', '.')+'@' + emails[Math.floor(Math.random() * emails.length)].domain); 
       setGender(response.data.person_gender);
       setAddress(response.data.person_address);
-      setCountry(response.data.country_code);
+
     })
     .catch((error) => { console.error(error); })
   }
+
+  getCountry()
+
 
   return (
     <form>
