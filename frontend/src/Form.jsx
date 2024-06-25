@@ -277,7 +277,7 @@ const Form = () => {
               <input
                   readOnly
                   disabled
-                  value={country}
+                  // value={country}
                   id="country"
                   name="country"
                   type="text"
